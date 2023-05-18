@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { TodosProvider } from './contexts';
-import { useTodos } from './contexts';
+import { useTodos, useStatus } from './contexts';
 import './App.css';
 import { TodoForm, TodoList } from './components';
 
 function App() {
   const [inputText, setInputText] = useState('');
-  const [status, setStatus] = useState('all');
+  const {status, setStatus} = useStatus();
   const { todos, setTodos } = useTodos();
   const [filteredTodos, setFilteredTodos] = useState([]);
 
