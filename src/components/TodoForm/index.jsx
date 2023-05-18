@@ -1,5 +1,9 @@
+import { useTodos } from "../../contexts";
 
-function TodoForm({ inputText, setInputText, todos, setTodos, setStatus }) {
+function TodoForm({ inputText, setInputText, setStatus }) {
+  
+  const {todos, setTodos} = useTodos();
+  
   function handleInput(e) {
     setInputText(e.target.value);
   }

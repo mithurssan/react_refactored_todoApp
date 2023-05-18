@@ -1,6 +1,9 @@
 import TodoItem from "../TodoItem";
+import { useTodos } from "../../contexts";
 
-function TodoList({ todos, setTodos, filteredTodos }) {
+function TodoList({ filteredTodos }) {
+	const { todos, setTodos } = useTodos();
+	
 	function deleteTodo(todo) {
 		let filteredTodos = todos.filter(el => el !== todo);
 		setTodos(filteredTodos);
@@ -8,7 +11,7 @@ function TodoList({ todos, setTodos, filteredTodos }) {
 
 	function completeTodo(todo) {
 		setTodos(todos.map((item) => {
-			if(item === todo) {
+			if (item === todo) {
 				return {
 					...item, completed: !item.completed
 				}
