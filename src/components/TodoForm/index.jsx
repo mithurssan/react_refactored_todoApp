@@ -1,9 +1,10 @@
-import { useTodos } from "../../contexts";
+import { useTodos, useStatus } from "../../contexts";
 
-function TodoForm({ inputText, setInputText, setStatus }) {
-  
-  const {todos, setTodos} = useTodos();
-  
+function TodoForm({ inputText, setInputText }) {
+
+  const { todos, setTodos } = useTodos();
+  const { status, setStatus } = useStatus();
+
   function handleInput(e) {
     setInputText(e.target.value);
   }
@@ -11,12 +12,12 @@ function TodoForm({ inputText, setInputText, setStatus }) {
   function handleSubmit(e) {
     e.preventDefault();
     setTodos([
-     ...todos,
-     {text: inputText, completed: false}
+      ...todos,
+      { text: inputText, completed: false }
     ])
     setInputText('')
   }
-    
+
   function handleStatus(e) {
     setStatus(e.target.value)
   }

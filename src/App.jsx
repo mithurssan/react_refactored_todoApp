@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useTodos, useStatus } from './contexts';
-import './App.css';
 import { TodoForm, TodoList } from './components';
+import './App.css';
 
 function App() {
   const [inputText, setInputText] = useState('');
-  const {status, setStatus} = useStatus();
+  const { status, setStatus } = useStatus();
   const { todos, setTodos } = useTodos();
   const [filteredTodos, setFilteredTodos] = useState([]);
 
@@ -26,7 +26,7 @@ function App() {
   return (
     <div>
       <header>Sarah's Todo List</header>
-      <TodoForm inputText={inputText} setInputText={setInputText} setStatus={setStatus} />
+      <TodoForm inputText={inputText} setInputText={setInputText} />
       <TodoList filteredTodos={filteredTodos} />
     </div>
   );
