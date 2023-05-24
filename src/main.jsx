@@ -1,13 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { TodosProvider, StatusProvider } from './contexts';
+import { Provider } from "react-redux"
+import { StatusProvider } from './contexts';
 
+import store from "./store"
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <TodosProvider>
+    <Provider store={store}>
         <StatusProvider>
             <App />
         </StatusProvider>
-    </TodosProvider>
+    </Provider>
 )

@@ -1,8 +1,9 @@
-import { useTodos, useStatus } from "../../contexts";
+import { useStatus } from "../../contexts";
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../actions'
 
 function TodoForm({ inputText, setInputText }) {
-
-  const { todos, setTodos } = useTodos();
+  const dispatch = useDispatch();
   const { status, setStatus } = useStatus();
 
   function handleInput(e) {
@@ -11,10 +12,9 @@ function TodoForm({ inputText, setInputText }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setTodos([
-      ...todos,
+    dispatch(addTodo(
       { text: inputText, completed: false }
-    ])
+    ))
     setInputText('')
   }
 

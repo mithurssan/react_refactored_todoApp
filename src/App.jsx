@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useTodos, useStatus } from './contexts';
+import { useSelector } from "react-redux"
+import { useStatus } from './contexts';
 import { TodoForm, TodoList } from './components';
 import './App.css';
 
 function App() {
   const [inputText, setInputText] = useState('');
   const { status, setStatus } = useStatus();
-  const { todos, setTodos } = useTodos();
+  const todos = useSelector((state) => state);
+
   const [filteredTodos, setFilteredTodos] = useState([]);
 
   useEffect(() => {
     filterHandler()
   }, [status, todos])
+
 
   function filterHandler() {
     if (status === 'completed') {
