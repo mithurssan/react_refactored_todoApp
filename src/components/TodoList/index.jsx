@@ -1,23 +1,16 @@
 import TodoItem from "../TodoItem";
-import { useTodos } from "../../contexts";
+import { useDispatch } from "react-redux";
+import { removeTodo, updateTodo } from '../../actions'
 
 function TodoList({ filteredTodos }) {
-	const { todos, setTodos } = useTodos();
-	
+	const dispatch = useDispatch();
+
 	function deleteTodo(todo) {
-		let filteredTodos = todos.filter(el => el !== todo);
-		setTodos(filteredTodos);
+		dispatch(removeTodo(todo));
 	}
 
 	function completeTodo(todo) {
-		setTodos(todos.map((item) => {
-			if (item === todo) {
-				return {
-					...item, completed: !item.completed
-				}
-			}
-			return item;
-		}))
+		dispatch(updateTodo(todo))
 	}
 
 	return (
